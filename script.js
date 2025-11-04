@@ -21,15 +21,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const readMoreButtons = document.querySelectorAll('.read-more-btn');
     
     readMoreButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // For research cards, look for research-description in the parent container
-            let textElement = this.parentElement.querySelector('.experience-text, .project-text');
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
             
-            // If not found, look for research-description in the research-content container
+            // Find the text element - try multiple approaches
+            let textElement = null;
+            
+            // Method 1: Look in parent (experience-content, project-content, etc.)
+            const parent = this.parentElement;
+            if (parent) {
+                textElement = parent.querySelector('.experience-text, .project-text, .research-description');
+            }
+            
+            // Method 2: Look in closest content container
             if (!textElement) {
-                const researchContent = this.closest('.research-content');
-                if (researchContent) {
-                    textElement = researchContent.querySelector('.research-description');
+                const contentContainer = this.closest('.experience-content, .project-content, .research-content');
+                if (contentContainer) {
+                    textElement = contentContainer.querySelector('.experience-text, .project-text, .research-description');
+                }
+            }
+            
+            // Method 3: Look in closest card
+            if (!textElement) {
+                const card = this.closest('.experience-card, .project-card, .research-card');
+                if (card) {
+                    textElement = card.querySelector('.experience-text, .project-text, .research-description');
                 }
             }
             
@@ -45,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     textElement.classList.add('expanded');
                     this.textContent = 'Read Less';
                 }
+            } else {
+                console.warn('Could not find text element for Read More button');
             }
         });
     });
@@ -79,20 +97,38 @@ window.addEventListener('scroll', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     
     let current = '';
+    const scrollPosition = window.scrollY + 150; // Offset for better detection
+    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            current = sectionId;
         }
     });
     
+    // Handle home section when at top
+    if (window.scrollY < 100) {
+        current = 'home';
+    }
+    
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        const href = link.getAttribute('href');
+        if (href === `#${current}` || (current === 'home' && href === '#home')) {
             link.classList.add('active');
         }
     });
+});
+
+// Initialize active state on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Trigger scroll event to set initial active state
+    setTimeout(() => {
+        window.dispatchEvent(new Event('scroll'));
+    }, 100);
 });
 
 // Form submission handling
@@ -272,8 +308,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const html = document.documentElement;
     const navbar = document.querySelector('.navbar');
     
-    // Check for saved theme preference or default to dark
-    const currentTheme = localStorage.getItem('theme') || 'dark';
+    // Check for saved theme preference, system preference, or default to light
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
     html.setAttribute('data-theme', currentTheme);
     updateToggleIcon(currentTheme);
     updateNavbarBackground(currentTheme);
