@@ -7,6 +7,9 @@ dist/
 # Old portfolio — do not push
 current/
 
+# Demo/template content — not part of portfolio, breaks Jekyll if Pages uses it
+tailwind-plus/
+
 # Local / OS
 .DS_Store
 *.log
