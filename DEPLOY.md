@@ -11,10 +11,8 @@ Your site will stay at **https://aditii2112.github.io** by using the same repo: 
 2. **GitHub Pages settings**
    - Repo → **Settings** → **Pages**
    - Under **Build and deployment**:
-     - **Source**: Deploy from a branch
-     - **Branch**: `main` (or your default branch)
-     - **Folder**: `/docs`
-   - Save. GitHub will serve the contents of the `docs/` folder at `https://aditii2112.github.io`.
+     - **Source**: **GitHub Actions** (not "Deploy from a branch")
+   - Save. The workflow in `.github/workflows/deploy-pages.yml` will deploy the `docs/` folder at `https://aditii2112.github.io`.
 
 ## Deploy steps (every time you want to update the site)
 
