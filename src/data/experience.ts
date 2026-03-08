@@ -1,0 +1,70 @@
+export interface ExperienceItem {
+  id: string;
+  title: string;
+  institution: string;
+  duration: string;
+  bullets: string[];
+  /** Company logo URL (e.g. Clearbit logo or uploaded image) */
+  logoUrl?: string;
+}
+
+export const experience: ExperienceItem[] = [
+  {
+    id: '1',
+    title: 'Full Stack & AI Developer Intern',
+    institution: 'Butterflo, USA',
+    duration: 'Jan 2026 – Present',
+    logoUrl: '/logos/butterflo.png',
+    bullets: [
+      'Engineered an automated image classification pipeline using Vertex AI, increasing data processing throughput by 40%.',
+      'Optimized LLM prompt pipelines, reducing 20% API costs and inference latency while maintaining model accuracy.',
+      'Managed production MLOps on GCP, overseeing dataset versioning and deployment for enterprise-grade applications.',
+    ],
+  },
+  {
+    id: '2',
+    title: 'Research Assistant',
+    institution: 'Speech Neuroengineering & Cybernetics Lab',
+    duration: 'April 2025 – Present',
+    logoUrl: '/logos/ucdavis.png',
+    bullets: [
+      "Led a demographic sensitivity analysis on 147 sEMG features in collaboration with Meta's Neurotechnology program.",
+      'Quantified demographic bias using Mixed-Effects Models, providing the statistical foundation for fair and equitable AI in assistive technologies.',
+      'Identified demographic-agnostic time-domain features to inform unbiased feature selection in neural interfaces.',
+    ],
+  },
+  {
+    id: '3',
+    title: 'Data Analytics Intern',
+    institution: 'fAIshion Inc., USA',
+    duration: 'June 2025 – Aug 2025',
+    logoUrl: '/logos/faishion.png',
+    bullets: [
+      'Built a conversational multimodal recommendation engine using LangChain and OpenAI\'s CLIP for semantic search.',
+      'Integrated Amazon S3 for vector storage and built ETL pipelines that reduced manual data cleaning time by 15 hrs/week.',
+      'Developed analytics dashboards for trend analysis and cross-functional decision-making with product teams.',
+    ],
+  },
+  {
+    id: '4',
+    title: 'Graduate Teaching Assistant',
+    institution: 'UC Davis – Graduate School of Management',
+    duration: 'Jan 2025 – June 2025',
+    logoUrl: '/logos/ucdavis.png',
+    bullets: [
+      'MGT 150 - Technology Management: Facilitated weekly discussion sessions for 150+ students, covering strategy, innovation, and decision-making in high-technology industries.',
+      'BAX 453 - Application Domains: Assisted students in applying advanced analytics concepts to real-world domains including healthcare, social networks, IoT, supply chain, and marketing analytics.',
+    ],
+  },
+  {
+    id: '5',
+    title: 'Software Engineering Intern',
+    institution: 'Globemind Pvt Ltd, Pune, India',
+    duration: 'Jan 2023 – Dec 2023',
+    logoUrl: '/logos/globemind.png',
+    bullets: [
+      'Architected a Full Stack Hotel Management System to automate bookings, room assignments, and payment workflows.',
+      'Managed the full SDLC for a private client, from requirement gathering to deployment and post-launch maintenance.',
+    ],
+  },
+];

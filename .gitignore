@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output (we use docs/ for GitHub Pages; do not ignore docs/)
+dist/
+
+# Old portfolio — do not push
+current/
+
+# Local / OS
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Optional
+bun.lock
+bun.lockb
