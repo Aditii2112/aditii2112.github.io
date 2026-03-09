@@ -85,6 +85,12 @@ export function ProjectCard({
             <p className="text-sm text-muted-foreground font-light leading-snug line-clamp-2">
               {oneLiner}
             </p>
+            <div className="pt-1">
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline underline-offset-2">
+                Read more
+                <span aria-hidden>→</span>
+              </span>
+            </div>
           </Link>
           {project.githubUrl && (
             <a

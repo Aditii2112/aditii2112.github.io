@@ -135,6 +135,16 @@ export default function Home() {
                     <Linkedin className="size-5" />
                   </a>
                 )}
+                {photographerInfo.email && (
+                  <a
+                    href={`mailto:${photographerInfo.email}`}
+                    className="flex items-center justify-center size-11 rounded-full border border-white/40 text-white hover:bg-white/10 transition-colors"
+                    aria-label="Email"
+                    title={`mailto:${photographerInfo.email}`}
+                  >
+                    <Mail className="size-5" />
+                  </a>
+                )}
                 {photographerInfo.resumeUrl && (
                   <a
                     href={photographerInfo.resumeUrl}
@@ -503,72 +513,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact */}
+        {/* Visitor Map */}
         <section id="contact" className="py-24 md:py-32 px-6 lg:px-8 border-t border-border bg-muted/30">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-light tracking-wide mb-4">Get in Touch</h2>
-                <p className="text-lg text-foreground font-light">Let's discuss your next project</p>
-              </div>
-            </ScrollReveal>
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 mb-16">
-              <motion.div
-                className="space-y-6"
-                initial={{ opacity: 0.8, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
-              >
-                <h3 className="text-2xl font-light tracking-wide">Send a Message</h3>
-                <p className="text-base md:text-lg text-foreground font-light">
-                  Fill out the form below and I'll get back to you within 24-48 hours. {photographerInfo.availability}
-                </p>
-                <ContactForm />
-              </motion.div>
-              <motion.div
-                className="space-y-8"
-                initial={{ opacity: 0.8, x: 10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-              >
-                <h3 className="text-2xl font-light tracking-wide">Contact Information</h3>
-                <p className="text-base md:text-lg text-foreground font-light">Prefer to reach out directly? Here's how you can contact me.</p>
-                <Separator />
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-sm bg-accent">
-                      <Mail className="size-5 text-foreground" />
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-base font-light tracking-wide text-foreground">Email</p>
-                      <a
-                        href={`mailto:${photographerInfo.email}`}
-                        className="text-base md:text-lg font-light hover:opacity-80 transition-colors"
-                      >
-                        {photographerInfo.email}
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-sm bg-accent">
-                      <MapPin className="size-5 text-foreground" />
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-base font-light tracking-wide text-foreground">Location</p>
-                      <p className="text-base md:text-lg font-light">{photographerInfo.location}</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-            <ScrollReveal>
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-light tracking-wide mb-2">Visitor Map</h3>
+                <h2 className="text-4xl md:text-5xl font-light tracking-wide mb-4">Visitor Map</h2>
                 <p className="text-base md:text-lg text-foreground font-light">Where visitors are from</p>
               </div>
-              <div ref={mapContainerRef} id="mapmyvisitors-container" className="min-h-[400px] w-full rounded-sm overflow-hidden bg-muted" />
+              <div
+                ref={mapContainerRef}
+                id="mapmyvisitors-container"
+                className="min-h-[400px] w-full rounded-sm overflow-hidden bg-muted"
+              />
             </ScrollReveal>
           </div>
         </section>

@@ -15,7 +15,6 @@ const navLinks = [
   { name: 'Education', hash: 'education' },
   { name: 'Experience', hash: 'experience' },
   { name: 'Projects', hash: 'projects' },
-  { name: 'Contact', hash: 'contact' },
   { name: 'Skills', hash: 'skills' },
 ];
 
