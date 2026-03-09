@@ -85,12 +85,10 @@ export function ProjectCard({
             <p className="text-sm text-muted-foreground font-light leading-snug line-clamp-2">
               {oneLiner}
             </p>
-            <div className="pt-1">
-              <span className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline underline-offset-2">
-                Read more
-                <span aria-hidden>→</span>
-              </span>
-            </div>
+            <span className="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-md border border-border bg-muted/50 text-sm font-medium text-foreground hover:bg-muted hover:border-foreground/20 transition-colors">
+              Read more
+              <span aria-hidden className="text-xs">→</span>
+            </span>
           </Link>
           {project.githubUrl && (
             <a
